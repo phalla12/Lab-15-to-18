@@ -1,0 +1,261 @@
+Lab 15 Main 
+import java.util.Scanner;
+public class RandomNumberTest3 {
+
+	
+	public static void main(String[] args) {
+		Scanner input= new Scanner (System.in);
+		RandomNumber user= new RandomNumber();
+		int number;
+		// User Define the whatever they want
+		number= user.GetNumber_1_and_10(20, 30);
+		System.out.printf("Random Number:%d\n",number);
+		// Generate From 1 to 10
+		System.out.printf("default random#:%d",user.GetNumber_1_and_10());
+		
+	}
+
+}
+Lab 15 Method
+public class RandomNumber {
+	public int GetNumber_1_and_10()
+	{
+		int number;
+		number= 1 + (int)(Math.random()*10);
+		return number;
+	}
+  public int GetNumber_1_and_10 (int low, int hi)
+  {
+	  int number;
+	  number= low + (int)(Math.random()*(hi-low));
+	  return number;
+  }
+}
+
+End Lab 15
+----------------------------------------
+Lab 16 Main
+import java.util.Scanner;
+public class DiceTest {
+
+
+	public static void main(String[] args) 
+	{
+		int userdice;
+		int random, random1;
+		Dice user=new Dice();
+		Scanner input= new Scanner(System.in);
+		System.out.print("How many dices you want to use?:");
+		userdice=input.nextInt();
+		// Call method dice with user input
+		random=user.RollDice(userdice);
+		System.out.printf("Your Dice Random:%d",random);
+		// call static method (no need to create object)
+		random1= Dice.Roll_1_Dice();
+		System.out.printf("\nRandom:%d", random1);
+		
+	}
+
+}
+Lab 16 Method
+public class Dice 
+{
+	public int RollDice(int n)
+	{
+		int number=0;
+		for (int i=1;i<=n;i++)
+		{
+			number= number + (1 + (int)(Math.random()*6));
+		}
+		return number;
+	}
+	public static int Roll_1_Dice()
+	{
+		int number;
+		number= 1 + (int)(Math.random()*6);
+		return number;
+	}
+}
+End Lab 16
+------------------------------------------------------
+Lab 17 Main
+import java.util.Scanner;
+public class DiceTest {
+
+
+	public static void main(String[] args) 
+	{
+		int userdice;
+		int random, random1;
+		int max;
+		int count;
+		//Dice user=new Dice();
+		String st;
+		do{
+		Scanner input= new Scanner(System.in);
+		System.out.print("How many dices you want to use:");
+		userdice=input.nextInt();
+		System.out.print("Maxinum Value Dice:?");
+		max=input.nextInt();
+		
+		// Call static method dice with 2 parameter
+		random= Dice.RollDice(userdice,max);
+		System.out.printf("Your Dice Random:%d",random);
+		
+		// call static method (no need to create object)
+		random1= Dice.Roll_1_Dice();
+		System.out.printf("\nRandom:%d", random1);
+		// Create object of Dice
+		Dice user=new Dice();
+		// Call method RollCount
+		count=user.RollCount();
+		System.out.printf("\nCount #Dice:%d", count);
+		System.out.println("\nDo you want continue:y/n");
+		st= input.next();
+		}while(st.equalsIgnoreCase("y"));	
+	}
+
+}
+Lab 17 Method
+public class Dice 
+{
+	 public static count=0;
+	public  static int RollDice(int n,int max)
+	{
+		int number=0;
+		for (int i=1;i<=n;i++)
+		{
+			number= number + (1 + (int)(Math.random()*max));
+			count++;
+			
+		}
+	
+		return number;
+	}
+	public static int Roll_1_Dice()
+	{
+		int number;
+		number= 1 + (int)(Math.random()*6);
+		return number;
+	}
+	public  int RollCount()
+	{
+	
+
+		return count;
+	}
+}
+End Lab 17
+--------------------------------------------
+
+Lab 18 Main
+import java.util.Scanner;
+public class DiceTest {
+
+
+public static void main(String[] args) 
+{
+int userdice;
+int random, random1;
+int max;
+int count;
+Dice user1=new Dice();
+Dice user2=new Dice();
+Dice user3=new Dice();
+int input1,input2;
+int dice3,max3;
+String st;
+do{
+Scanner input= new Scanner(System.in);
+System.out.print("How many dices you want to use:");
+userdice=input.nextInt();
+System.out.print("Maxinum Value Dice:?");
+max=input.nextInt();
+// Call user1 method
+input1=user1.RollDice(2, 6);
+System.out.printf("Random input1:%d",input1);
+System.out.println("");
+// Call user2 method
+input2=user2.RollDice(2, 6);
+System.out.printf("Random input2:%d",input2);
+System.out.println("");
+// Call User3 object
+System.out.print("User3 Dice#:");
+dice3=input.nextInt();
+System.out.print("User3 Max#:");
+max3=input.nextInt();
+System.out.printf("Random user3:%d", user3.RollDice(dice3, max3));
+
+// Call static method dice with 2 parameter
+random= Dice.RollDice(userdice,max);
+System.out.printf("Your Dice Random:%d",random);
+
+
+
+
+
+
+
+// call static method (no need to create object)
+random1= Dice.Roll_1_Dice();
+System.out.printf("\nRandom:%d", random1);
+System.out.println("");
+// Call the method RollDice
+System.out.printf("Count with Regular method:%d",user1.RollCount1());
+// Create object of Dice
+Dice user=new Dice();
+// Call method RollCount
+count=user.RollCount();
+System.out.printf("\nCount #Dice:%d", count);
+//call static Roll Dice
+System.out.printf("Static Roll#:%d", Dice.RollCount());
+System.out.println("\nDo you want continue:y/n");
+st= input.next();
+}while(st.equalsIgnoreCase("y")); 
+}
+
+}
+Lab 18 Method
+public class Dice 
+{
+private static int count;
+public  static int RollDice(int n,int max)
+{
+count=n;
+int number=0;
+for (int i=1;i<=n;i++)
+{
+number= number + (1 + (int)(Math.random()*max));
+//count++;
+
+
+
+
+}
+
+
+
+
+return number;
+}
+public static int Roll_1_Dice()
+{
+int number;
+number= 1 + (int)(Math.random()*6);
+return number;
+}
+public  int RollCount1()
+{
+
+
+
+
+return count;
+}
+public static int RollCount()
+{
+return count;
+}
+}
+End Lab18
+---------------------------------------------------
